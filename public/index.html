@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Web site created using create-react-app"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <!--
+      Notice the use of %PUBLIC_URL% in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>React App</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <script type="text/javascript">
+      (function(w, d, x, id){
+        s=d.createElement('script');
+        s.src='https://dg9yx063wiiht.cloudfront.net/amazon-connect-chat-interface-client.js';
+        s.async=1;
+        s.id=id;
+        d.getElementsByTagName('head')[0].appendChild(s);
+        w[x] =  w[x] || function() { (w[x].ac = w[x].ac || []).push(arguments) };
+      })(window, document, 'amazon_connect', '01e30cbb-4a84-4154-a2d4-1d38aca3c714');
+      amazon_connect('styles', { iconType: 'CHAT_VOICE', openChat: { color: '#ffffff', backgroundColor: '#123456' }, closeChat: { color: '#ffffff', backgroundColor: '#123456'} });
+      amazon_connect('snippetId', 'QVFJREFIaWtnNjZPdjVkZlUwdFhDTXVXcGwxYjNONktFVmUvMXdZcUxEazZpU0lmVXdGM3hyOUNJSzNHM2Z2M2tiZVk1S3MwQUFBQWJqQnNCZ2txaGtpRzl3MEJCd2FnWHpCZEFnRUFNRmdHQ1NxR1NJYjNEUUVIQVRBZUJnbGdoa2dCWlFNRUFTNHdFUVFNbFdwM1RMRlBxL3Y5eGJMdEFnRVFnQ3Y2MFUzanlxdjh4NTh4ZUxYbjJ1MUhYR254NXJYYTlaWmpFSCtDbGpnaXV1YXdQWndiTDk4S3BzYUU6OkM2WE8vTVV5RThIeGRCYTMwV2FPcXQwcUxseVVkcC9MZzhzN01JUm5tV2JJU0lVUUxVdUFqcTZuVFNndnBOd3hiaTFYcDJxc2ZpTCs5Q1h6S3phb29TMnRYTWRMZTZOaWxDMWFBc0RhV29uMHpVWm5UTEZ3cjdBd1hXRjRISzM5azM3ckJQcUhlUCt3UmxGWWZhcGFtbndVZUttd0I1cz0=');
+      amazon_connect('supportedMessagingContentTypes', [ 'text/plain', 'text/markdown', 'application/vnd.amazonaws.connect.message.interactive', 'application/vnd.amazonaws.connect.message.interactive.response' ]);
+    </script>
+    <div id="root"></div>
+    <div id="container-div" style="width: 400px; height: 800px;"></div>
+    <script type="text/javascript">
+      var containerDiv = document.getElementById("container-div");
+      var instanceURL = "https://my-instance-domain.my.connect.aws/ccp-v2/";
+      // initialize the streams api
+      function init() {
+        // initialize the ccp
+        connect.core.initCCP(containerDiv, {
+          ccpUrl: instanceURL,            // REQUIRED
+          loginPopup: true,               // optional, defaults to `true`
+          loginPopupAutoClose: true,      // optional, defaults to `false`
+          loginOptions: {                 // optional, if provided opens login in new window
+            autoClose: true,              // optional, defaults to `false`
+            height: 600,                  // optional, defaults to 578
+            width: 400,                   // optional, defaults to 433
+            top: 0,                       // optional, defaults to 0
+            left: 0                       // optional, defaults to 0
+          },
+          region: "eu-central-1",         // REQUIRED for `CHAT`, optional otherwise
+          softphone: {                    // optional, defaults below apply if not provided
+            allowFramedSoftphone: true,   // optional, defaults to false
+            disableRingtone: false,       // optional, defaults to false
+            ringtoneUrl: "[your-ringtone-filepath].mp3", // optional, defaults to CCP’s default ringtone if a falsy value is set
+            allowFramedVideoCall: true,    // optional, default to false
+            allowEarlyGum: true    //optional, default to true
+          },
+          task: {
+            disableRingtone: false, // optional, defaults to false
+            ringtoneUrl: "[your-ringtone-filepath].mp3", // optional, defaults to CCP's default ringtone if a falsy value is set
+          },
+          pageOptions: { //optional
+            enableAudioDeviceSettings: false, //optional, defaults to 'false'
+            enableVideoDeviceSettings: false, //optional, defaults to 'false'
+            enablePhoneTypeSettings: true //optional, defaults to 'true' 
+          },
+          shouldAddNamespaceToLogs: false, //optional, defaults to 'false'
+          ccpAckTimeout: 5000, //optional, defaults to 3000 (ms)
+          ccpSynTimeout: 3000, //optional, defaults to 1000 (ms)
+          ccpLoadTimeout: 10000 //optional, defaults to 5000 (ms)
+         });
+      }
+    </script>
+  </body>
+</html>
