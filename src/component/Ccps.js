@@ -25,8 +25,8 @@ class Ccps extends Component {
     render() {
         return (
             <div id='container-ccp' >
-                <p>Custom CCP</p>
-                <button onClick={this.initCCP}>click</button>
+                <p className='name-style'>Custom CCP</p>
+                <button className='button-style' onClick={this.initCCP}>click</button>
             </div>
         );
     }
