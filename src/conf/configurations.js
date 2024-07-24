@@ -1,5 +1,5 @@
 const ccpConfig =  {
-    ccpUrl: 'https://tumantuhsaml.my.connect.aws/ccp-v2',
+    ccpUrl: 'hhttps://bathannntuman.my.connect.aws/ccp-v2',
     loginUrl:'https://d-92670e3843.awsapps.com/start',           // REQUIRED
     loginPopup: true,               // optional, defaults to `true`
     loginPopupAutoClose: true,      // optional, defaults to `false`
