@@ -1,6 +1,6 @@
 const ccpConfig =  {
-    ccpUrl: 'hhttps://bathannntuman.my.connect.aws/ccp-v2',
-    loginUrl:'https://d-92670e3843.awsapps.com/start',           // REQUIRED
+    ccpUrl: 'https://bathannntuman.my.connect.aws/ccp-v2',
+    loginUrl:'https://bathannntuman.my.connect.aws/ccp-v2',           // REQUIRED
     loginPopup: true,               // optional, defaults to `true`
     loginPopupAutoClose: true,      // optional, defaults to `false`
     loginOptions: {                 // optional, if provided opens login in new window
