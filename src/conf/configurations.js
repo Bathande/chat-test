@@ -1,7 +1,7 @@
 const ccpConfig =  {
-    ccpUrl: 'https://bathannntuman.my.connect.aws/ccp-v2',
+    ccpUrl: 'https://bathannenv.my.connect.aws/ccp-v2',
     loginUrl:'',           // REQUIRED
-    loginPopup: true,               // optional, defaults to `true`
+    loginPopup: false,               // opens login in the same iframe
     loginPopupAutoClose: true,      // optional, defaults to `false`
     loginOptions: {                 // optional, if provided opens login in new window
       autoClose: true,              // optional, defaults to `false`

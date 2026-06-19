@@ -1,35 +1,40 @@
-import React, { Component } from 'react';
-import "amazon-connect-streams";
-import {ccpConfig} from "../conf/configurations"
-import "./css/ccps.css"
+import React, { useRef, useEffect } from 'react';
+import { useConnect } from '../connectContext';
+import "./css/ccps.css";
 
-class Ccps extends Component {
-    constructor(props) {
-        super(props);
+const Ccps = () => {
+  const { initialized, initCCP, agentState, agentName } = useConnect();
+  const ccpRef = useRef(null);
+
+  useEffect(() => {
+    if (ccpRef.current && !initialized) {
+      initCCP(ccpRef.current);
     }
+  }, [initCCP, initialized]);
 
-    // componentDidMount(){
-    //     const containerDiv = document.getElementById("container-ccp");
-    //     window.connect.core.initCCP(containerDiv, ccpConfig);
-    
-          
-    // }
-  
-    initCCP = async () => {
-    let containerDiv = document.getElementById("container-ccp");
-    window.connect.core.initCCP(containerDiv, ccpConfig);
+  const currentStatus = agentState ? (agentState.name || agentState.type || 'Unknown') : 'Not Connected';
 
-      
-      };
+  return (
+    <div className="ccp-wrapper">
+      <div className="ccp-header">
+        <h1 className="ccp-title">Contact Control Panel</h1>
+        <p className="ccp-subtitle">Handle inbound and outbound contacts</p>
+      </div>
 
-    render() {
-        return (
-            <div id='container-ccp' >
-                <p className='name-style'>Custom CCP</p>
-                <button className='button-style' onClick={this.initCCP}>click</button>
-            </div>
-        );
-    }
-}
+      {initialized && (
+        <div className="ccp-status-bar">
+          <div className="ccp-agent-info">
+            <span className="status-indicator connected"></span>
+            <span>{agentName} — {currentStatus}</span>
+          </div>
+        </div>
+      )}
+
+      <div className="ccp-container">
+        <div ref={ccpRef} id="container-ccp" className="ccp-embed"></div>
+      </div>
+    </div>
+  );
+};
 
 export default Ccps;
